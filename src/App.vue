@@ -1,10 +1,10 @@
 <script setup>
     import { ref, computed, watch, watchEffect, onMounted } from 'vue'
-    import MenuForm from './components/MenuForm.vue'
-    import CategoryFilter from './components/CategoryFilter.vue'
-    import MenuItem from './components/MenuItem.vue'
-    import MenuSummary from './components/MenuSummary.vue'
-    import NotificationToast from './components/NotificationToast.vue'
+    import MenuForm from '@/components/MenuForm.vue'
+    import CategoryFilter from '@/components/CategoryFilter.vue'
+    import MenuItem from '@/components/MenuItem.vue'
+    import MenuSummary from '@/components/MenuSummary.vue'
+    import NotificationToast from '@/components/NotificationToast.vue'
 
     const items = ref([])
     const activeCategory = ref('Todas')
