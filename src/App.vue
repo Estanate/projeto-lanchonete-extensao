@@ -1,6 +1,7 @@
 <script setup>
     import { ref, provide, computed } from 'vue'
     import { useRoute } from 'vue-router'
+    import { useStore } from 'vuex'
     import NavBar from './components/NavBar.vue'
     import NotificationToast from './components/NotificationToast.vue'
 
@@ -22,6 +23,16 @@
     const today = new Date().toLocaleDateString('pt-BR', {
         day: '2-digit', month: 'short', year: 'numeric',
     })
+
+    const store = useStore()
+
+    const items = computed(() =>
+        store.getters['cart/items'])
+
+    function addItem(item) {
+        store.dispatch('cart/addToCart', item)
+    }
+
 </script>
 
 <template>

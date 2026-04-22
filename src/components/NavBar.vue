@@ -13,6 +13,19 @@
         store.dispatch('auth/logout')
         router.push({ name: 'home' })
     }
+
+    import { computed } from 'vue'
+    import { useStore } from 'vuex'
+
+    const store = useStore()
+
+    const cartCount       = computed(() => store.getters['cart/count'])
+    const isAuthenticated = computed(() => store.getters['auth/isAuthenticated'])
+    const username        = computed(() => store.getters['auth/username'])
+
+    function logout() {
+        store.dispatch('auth/logout')
+}
 </script>
 
 <template>

@@ -7,6 +7,18 @@
     })
 
     const emit = defineEmits(['remove-item'])
+
+    import { useStore } from 'vuex'
+    import { inject } from 'vue'
+    import { NOTIFY } from '@/constants'
+
+    const store  = useStore()
+    const notify = inject('notify')
+
+    function addToCart() {
+        store.dispatch('cart/addToCart', props.item)
+        notify(`"${props.item.name}" adicionado!`, NOTIFY.SUCCESS)
+    }
 </script>
 
 <template>
