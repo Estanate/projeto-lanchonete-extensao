@@ -21,10 +21,14 @@
 
     const timerId = ref(null)
 
-    const alertClass = computed(() => {
-        const map = { success: 'alert-success', info: 'alert-info', error: 'alert-danger' }
-        return map[props.type] || 'alert-info'
-    })
+    import { NOTIFY } from '@/constants'
+    defineProps({
+    type: {
+        type: String,
+        default: NOTIFY.SUCCESS,
+        validator: (v) => Object.values(NOTIFY).includes(v),
+    },
+})
 
     onMounted(() => {
         timerId.value = setTimeout(() => {
@@ -38,9 +42,10 @@
 </script>
 
 <template>
-    <div :class="['alert d-flex align-items-center shadow-sm mb-2', alertClass]" role="alert">
-        <span class="me-auto">{{ message }}</span>
-        <button type="button" class="btn-close ms-2" @click="emit('dismiss')"></button>
+    <div :class="['pn-toast', type]">
+        <span class="pn-toast-icon">{{ icon }}</span>
+        <span>{{ message }}</span>
+        <button class="pn-toast-close">×</button>
     </div>
 </template>
 

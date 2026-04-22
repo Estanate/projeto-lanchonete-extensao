@@ -42,13 +42,16 @@
 </script>
 
 <template>
-    <div class="card shadow-sm border-0">
+    <div class="card">
         <div class="card-body">
-            <h2 class="card-title h5 fw-bold mb-3">➕ Novo Item</h2>
+            <div class="d-flex justify-content-between">
+                <h2 class="card-title">Novo Item</h2>
+                <span class="pn-tag">+</span>
+            </div>
 
             <form @submit.prevent="submitForm">
                 <div class="mb-3">
-                    <label for="name" class="form-label fw-semibold">Nome</label>
+                    <label for="name" class="pn-label">Nome</label>
                     <input
                         id="name"
                         ref="nameInput"
@@ -94,7 +97,7 @@
 
                 <button
                     type="submit"
-                    class="btn btn-dark w-100 fw-semibold"
+                    class="btn btn-primary w-100"
                     :disabled="!isFormValid"
                 >
                     Adicionar
